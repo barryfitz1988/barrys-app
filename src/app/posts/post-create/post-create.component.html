@@ -1,8 +1,18 @@
 <h2>This is a test by Barry</h2>
+<mat-card>
+    <mat-form-field>
+        <input matInput type="text" [(ngModel)] ="enteredTitle">
+    </mat-form-field>
+<mat-form-field>
+<textarea matInput rows="6"  [(ngModel)] ="enteredContent"></textarea>
+</mat-form-field>
+    <button mat-raised-button
+            color = "primary"
+            (click)="onAddPost()">Save</button>
+    <hr>x
+</mat-card>
 
-<textarea rows="6" [(ngModel)] ="enteredValue"></textarea>
-<p>{{ newPost }}</p>
-<hr>
 
-<button (click)="onAddPost()">Save</button>
+
+
 
