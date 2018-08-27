@@ -1,15 +1,35 @@
 <h2>This is a test by Barry</h2>
 <mat-card>
-    <mat-form-field>
-        <input matInput type="text" [(ngModel)] ="enteredTitle">
-    </mat-form-field>
-<mat-form-field>
-<textarea matInput rows="6"  [(ngModel)] ="enteredContent"></textarea>
-</mat-form-field>
-    <button mat-raised-button
-            color = "primary"
-            (click)="onAddPost()">Save</button>
-    <hr>x
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+        <mat-form-field>
+            <input matInput
+                   type="text"
+                   name="title"
+                   ngModel
+                   required
+                   minlength="3"
+                   placeholder="Enter A Title"
+                   #title="ngModel">
+            <mat-error *ngIf="title.invalid">Please Enter A Title</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput
+                      rows="6"
+                      name="content"
+                      ngModel
+                      required
+                      placeholder="Enter Text"
+                      #content="ngModel"></textarea>
+            <mat-error *ngIf="content.invalid">Please Enter Content</mat-error>
+        </mat-form-field>
+        <hr>
+        <button mat-raised-button
+                color = "primary"
+                type="submit">Save
+        </button>
+
+    </form>
+
 </mat-card>
 
 
