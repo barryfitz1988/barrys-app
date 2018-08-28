@@ -1,6 +1,8 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import { Subject } from 'rxjs';
 import {Recipe} from './recipes.model';
+import {Ingredient} from '../shared/ingredient.model';
+import {ShoppingListService} from '../shopping-list/shopping-list.service';
 
 
 @Injectable({providedIn: 'root'})
@@ -10,9 +12,18 @@ export class RecipesService {
     private recipeUpdated = new Subject<Recipe[]>();
 
     private recipe: Recipe[] = [
-        new Recipe('Cake', 'Tasty', 'https://img.taste.com.au/decVmkuu/taste/2017/03/chocolate-meringue-layer-cake-124699-1.jpg')
+        new Recipe(
+            'The Grocers Daughter Special',
+            'This is so yummy',
+            'https://img.taste.com.au/decVmkuu/taste/2017/03/chocolate-meringue-layer-cake-124699-1.jpg',
+            [
+                new Ingredient('egg', 5),
+                new Ingredient('milk', 500),
+                new Ingredient('flour', 200)
+            ]),
     ];
 
+    constructor(private slService: ShoppingListService) {}
 
     getRecipe() {
         return [...this.recipe];
@@ -28,10 +39,15 @@ export class RecipesService {
     }
 
 
-    setRecipe(name: string, description: string, imagePath: string) {
-        const recipe: Recipe = {name: name, description: description, imagePath: imagePath};
+    setRecipe(name: string, description: string, imagePath: string, ingredients: Ingredient[]) {
+        const recipe: Recipe = {name: name, description: description, imagePath: imagePath, ingredients: ingredients };
         this.recipe.push(recipe);
         this.recipeUpdated.next([...this.recipe]);
 
+    }
+
+    addIngredientsToShoppingList(ingredient: Ingredient[]) {
+
+        this.slService.addIngredientsToList(ingredient);
     }
 }
