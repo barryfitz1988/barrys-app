@@ -20,6 +20,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingItemsComponent } from './shopping-list/shopping-items/shopping-items.component';
 import {DropdownDirective} from './shared/dropdown.directive';
+import {AppRoutingModule} from './app-routing.module';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {DropdownDirective} from './shared/dropdown.directive';
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
 
   ],
   providers: [],
