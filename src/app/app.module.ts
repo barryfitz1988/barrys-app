@@ -18,6 +18,7 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { ShoppingItemsComponent } from './shopping-list/shopping-items/shopping-items.component';
 
 
 @NgModule({
@@ -26,12 +27,13 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
         PostListComponent,
         AppComponent,
         HeaderComponent,
-        RecipesComponent,
         RecipeListComponent,
+        RecipesComponent,
         RecipeDetailComponent,
         RecipeItemComponent,
         ShoppingListComponent,
-        ShoppingEditComponent
+        ShoppingEditComponent,
+        ShoppingItemsComponent
   ],
   imports: [
     BrowserModule,
