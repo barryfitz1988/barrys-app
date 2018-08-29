@@ -21,6 +21,14 @@ export class RecipesService {
                 new Ingredient('milk', 500),
                 new Ingredient('flour', 200)
             ]),
+        new Recipe(
+            'Barrys Burger',
+            'This is also yummy',
+            'https://upload.wikimedia.org/wikipedia/commons/4/47/Hamburger_%28black_bg%29.jpg',
+            [
+                new Ingredient('buns', 2),
+                new Ingredient('steak meat', 1)
+            ]),
     ];
 
     constructor(private slService: ShoppingListService) {}
@@ -49,5 +57,9 @@ export class RecipesService {
     addIngredientsToShoppingList(ingredient: Ingredient[]) {
 
         this.slService.addIngredientsToList(ingredient);
+    }
+
+    getRecipeById(id: number) {
+        return this.recipe[id];
     }
 }
