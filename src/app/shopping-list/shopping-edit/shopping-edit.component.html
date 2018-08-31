@@ -8,10 +8,11 @@
                     <input matInput
                            type="text"
                            name="name"
+                            id="name"
                            ngModel
                            required
                            minlength="1"
-                           placeholder="Enter A Title"
+                           placeholder="Enter A Name"
                            #name="ngModel">
                     <mat-error *ngIf="name.invalid">Please Enter A Name</mat-error>
                 </mat-form-field>
@@ -19,12 +20,14 @@
             <div class="col-sm-2 form-group" >
                 <mat-form-field>
                     <input matInput
-                           type="text"
+                           type="number"
                            name="amount"
+                           id="amount"
                            ngModel
                            required
                            minlength="1"
                            placeholder="Enter An Amount"
+                           pattern="^[1-9]+[0-9]*$"
                            #amount="ngModel">
                     <mat-error *ngIf="amount.invalid">Please Enter An Amount</mat-error>
                 </mat-form-field>
@@ -35,7 +38,8 @@
                 <hr>
                 <button mat-raised-button
                         class="btn btn-success"
-                        type="submit">Add
+                        type="submit"
+                        [disabled]="!postForm.valid">Add
                 </button>
                 <button mat-raised-button
                         class="btn btn-danger"
