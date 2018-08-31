@@ -7,6 +7,7 @@ export class ShoppingListService {
     ingredientsChanged = new EventEmitter<Ingredient[]>();
     private ingredient: Ingredient[] = [];
     private ingredientUpdated = new Subject<Ingredient[]>();
+    ingredientEdited = new Subject<number>();
 
 
     getIngredient() {
@@ -38,6 +39,12 @@ export class ShoppingListService {
     addIngredientsToList(ingredient: Ingredient[]) {
         this.ingredient.push(...ingredient);
         this.ingredientsChanged.emit(this.ingredient.slice());
+
+    }
+
+
+    getIngredientByIndex(index: number) {
+        return this.ingredient[index];
 
     }
 }
