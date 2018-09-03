@@ -31,7 +31,8 @@ export class RecipesService {
             ]),
     ];
 
-    constructor(private slService: ShoppingListService) {}
+    constructor(private slService: ShoppingListService) {
+    }
 
     getRecipe() {
         return [...this.recipe];
@@ -48,7 +49,7 @@ export class RecipesService {
 
 
     setRecipe(name: string, description: string, imagePath: string, ingredients: Ingredient[]) {
-        const recipe: Recipe = {name: name, description: description, imagePath: imagePath, ingredients: ingredients };
+        const recipe: Recipe = {name: name, description: description, imagePath: imagePath, ingredients: ingredients};
         this.recipe.push(recipe);
         this.recipeUpdated.next([...this.recipe]);
 
@@ -62,4 +63,21 @@ export class RecipesService {
     getRecipeById(id: number) {
         return this.recipe[id];
     }
+
+    addRecipe(recipe: Recipe) {
+        this.recipe.push(recipe);
+        this.recipeUpdated.next(this.recipe.slice());
+    }
+
+    updateRecipe(index: number, newRecipe: Recipe) {
+        this.recipe[index] = newRecipe;
+        this.recipeUpdated.next(this.recipe.slice());
+    }
+
+    deleteRecipe(index: number) {
+        this.recipe.splice(index, 1);
+        this.recipeUpdated.next(this.recipe.slice());
+    }
+
+
 }
