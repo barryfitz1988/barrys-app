@@ -34,13 +34,30 @@ export class ShoppingEditComponent implements OnInit   {
         );
     }
 
-    onAddPost(form: NgForm) {
+    onChange(form: NgForm) {
+        const newIngredient = new Ingredient(form.value.name, form.value.amount);
+
         if (form.invalid) {
             return;
         }
-        this.shoppingListService.setIngredient(form.value.name, form.value.amount);
+        if (this.editMode) {
+            this.shoppingListService.updateIngredient(this.editItemIndex, newIngredient );
+        } else {
+            this.shoppingListService.setIngredient(form.value.name, form.value.amount);
+        }
+        this.editMode = false;
         form.resetForm();
     }
 
+    onClear() {
+        this.shoppingListForm.reset();
+        this.editMode = false;
+    }
+
+
+    onDelete() {
+        this.shoppingListService.deleteIngredient(this.editItemIndex);
+        this.shoppingListForm.reset();
+    }
 
 }

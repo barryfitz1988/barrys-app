@@ -1,7 +1,7 @@
 <div class="row">
 <div class="col-xs-12">
     <mat-card>
-        <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+        <form (submit)="onChange(postForm)" #postForm="ngForm">
         <div class="row">
             <div class="col-sm-5 form-group">
                 <mat-form-field>
@@ -39,15 +39,18 @@
                 <button mat-raised-button
                         class="btn btn-success"
                         type="submit"
-                        [disabled]="!postForm.valid">Add
+                        [disabled]="!postForm.valid">{{editMode ? 'Update' : 'Add'}}
                 </button>
                 <button mat-raised-button
                         class="btn btn-danger"
-                        type="button">Delete
+                        type="button"
+                        (click)="onDelete()"
+                        *ngIf="editMode">Delete
                 </button>
                 <button mat-raised-button
                         class="btn btn-primary"
-                        type="button">Clear
+                        type="button"
+                        (click)="onClear()">Clear
                 </button>
             </div>
         </div>
