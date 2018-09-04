@@ -14,8 +14,8 @@ export class RecipesService {
     private recipe: Recipe[] = [
         new Recipe(
             'The Grocers Daughter Special',
-            'This is so yummy',
             'https://img.taste.com.au/decVmkuu/taste/2017/03/chocolate-meringue-layer-cake-124699-1.jpg',
+            'This is so yummy',
             [
                 new Ingredient('egg', 5),
                 new Ingredient('milk', 500),
@@ -23,8 +23,8 @@ export class RecipesService {
             ]),
         new Recipe(
             'Barrys Burger',
-            'This is also yummy',
             'https://upload.wikimedia.org/wikipedia/commons/4/47/Hamburger_%28black_bg%29.jpg',
+            'This is also yummydd',
             [
                 new Ingredient('buns', 2),
                 new Ingredient('steak meat', 1)
@@ -48,8 +48,8 @@ export class RecipesService {
     }
 
 
-    setRecipe(name: string, description: string, imagePath: string, ingredients: Ingredient[]) {
-        const recipe: Recipe = {name: name, description: description, imagePath: imagePath, ingredients: ingredients};
+    setRecipe(name: string, imagePath: string,  description: string, ingredients: Ingredient[]) {
+        const recipe: Recipe = {name: name,  imagePath: imagePath, description: description, ingredients: ingredients};
         this.recipe.push(recipe);
         this.recipeUpdated.next([...this.recipe]);
 
